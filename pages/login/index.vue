@@ -32,8 +32,8 @@
 export default {
     transition: "page",
     data: () => ({
-        email: "",
-        password: "",
+        email: "csidiropoulos1990@gmail.com",
+        password: "dfgvbn",
     }),
     methods: {
         async signIn() {
@@ -45,7 +45,6 @@ export default {
 
                 if (this.$fire.auth.currentUser) {
                     this.$router.push("/");
-                    console.log("signed in");
                 }
             } catch (error) {
                 console.log(error);
@@ -54,21 +53,21 @@ export default {
     },
     async created() {
         /*
-                                                                                try {
-                                                                                    let result = await this.$fire.auth.signInWithEmailAndPassword(
-                                                                                        this.email,
-                                                                                        this.password
-                                                                                    );
+                                                                                        try {
+                                                                                            let result = await this.$fire.auth.signInWithEmailAndPassword(
+                                                                                                this.email,
+                                                                                                this.password
+                                                                                            );
 
-                                                                                    let usersCollection = await this.$fire.firestore
-                                                                                        .collection("users")
-                                                                                        .get();
-                                                                                    for (const doc of usersCollection.docs) {
-                                                                                        console.log(doc.id, "=>", doc.data());
-                                                                                    }
-                                                                                } catch (error) {
-                                                                                    console.log(error);
-                                                                                }*/
+                                                                                            let usersCollection = await this.$fire.firestore
+                                                                                                .collection("users")
+                                                                                                .get();
+                                                                                            for (const doc of usersCollection.docs) {
+                                                                                                console.log(doc.id, "=>", doc.data());
+                                                                                            }
+                                                                                        } catch (error) {
+                                                                                            console.log(error);
+                                                                                        }*/
     },
 };
 </script>

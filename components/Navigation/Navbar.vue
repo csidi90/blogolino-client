@@ -11,10 +11,10 @@
                     </v-btn>
                     <v-spacer></v-spacer>
 
-                    <v-btn v-show="!authenticated" text to="login">
+                    <v-btn :v-show="authenticated" text to="login">
                         <v-icon small class="mr-2">fa-lock-open</v-icon>anmelden
                     </v-btn>
-                    <v-btn v-show="!authenticated" text to="signup">
+                    <v-btn :v-show="authenticated" text to="signup">
                         <v-icon small class="mr-2">fa-user-plus</v-icon>registrieren
                     </v-btn>
                 </v-toolbar-items>
@@ -91,11 +91,7 @@ export default {
             },
         ],
     }),
-    computed: {
-        authenticated() {
-            return this.$fire.auth.currentUser;
-        },
-    },
+    methods: {},
 };
 </script>
 
