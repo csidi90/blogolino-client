@@ -17,10 +17,10 @@
             </v-btn>
             <v-spacer></v-spacer>
 
-            <v-btn v-show="authenticated == false" text to="login">
+            <v-btn v-show="!authenticated" text to="login">
               <v-icon small class="mr-2">fa-lock-open</v-icon>anmelden
             </v-btn>
-            <v-btn v-show="authenticated == false" text to="signup">
+            <v-btn v-show="!authenticated" text to="signup">
               <v-icon small class="mr-2">fa-user-plus</v-icon>registrieren
             </v-btn>
           </v-toolbar-items>
@@ -34,7 +34,7 @@
     </v-app-bar>
     <v-navigation-drawer absolute temporary right v-model="drawer">
       <v-list dense>
-        <v-list-item link to="login">
+        <v-list-item v-show="!authenticated" link to="login">
           <v-list-item-icon>
             <v-icon small>fa-lock-open</v-icon>
           </v-list-item-icon>
@@ -42,7 +42,7 @@
             <v-list-item-title>Login</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link to="signup">
+        <v-list-item v-show="!authenticated" link to="signup">
           <v-list-item-icon>
             <v-icon small>fa-user-plus</v-icon>
           </v-list-item-icon>
