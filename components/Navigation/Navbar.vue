@@ -1,7 +1,9 @@
 <template>
   <div class="mb-10">
     <v-app-bar app height="100%" color="white">
-      <h1 class="display-1 mr-10">Blogolino</h1>
+      <nuxt-link class="banner" exact to="/">
+        <h1 class="display-1 mr-10">Blogolino</h1>
+      </nuxt-link>
       <v-row no-gutters class="fill-height">
         <v-col class="fill-height ma-0 pa-0 hidden-sm-and-down">
           <v-toolbar-items>
@@ -32,7 +34,7 @@
         @click.stop="drawer = !drawer"
       ></v-app-bar-nav-icon>
     </v-app-bar>
-    <v-navigation-drawer absolute temporary right v-model="drawer">
+    <v-navigation-drawer app right v-model="drawer">
       <v-list dense>
         <v-list-item v-show="!authenticated" link to="login">
           <v-list-item-icon>
@@ -128,5 +130,9 @@ export default {
 
 .v-btn::before {
   background-color: transparent;
+}
+
+.banner {
+  text-decoration: none;
 }
 </style>
