@@ -34,7 +34,7 @@
         @click.stop="drawer = !drawer"
       ></v-app-bar-nav-icon>
     </v-app-bar>
-    <v-navigation-drawer app right v-model="drawer">
+    <v-navigation-drawer app right temporary v-model="drawer">
       <v-list dense>
         <v-list-item v-show="!authenticated" link to="login">
           <v-list-item-icon>
