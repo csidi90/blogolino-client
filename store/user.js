@@ -4,7 +4,7 @@ export const state = () => ({
 
 export const mutations = {
   SET_USER (state, user) {
-    state.user = user.toJSON()
+    state.user = user
     console.log('SET_USER', state.user)
   }
 }

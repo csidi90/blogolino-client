@@ -1,6 +1,6 @@
 <template>
   <div class="mb-10">
-    <v-app-bar app height="100%" color="white">
+    <v-app-bar app height="100%" color="white" elevation="0">
       <nuxt-link class="banner" exact to="/">
         <h1 class="display-1 mr-10">Blogolino</h1>
       </nuxt-link>
@@ -24,6 +24,9 @@
             </v-btn>
             <v-btn v-show="!authenticated" text to="signup">
               <v-icon small class="mr-2">fa-user-plus</v-icon>registrieren
+            </v-btn>
+            <v-btn v-show="authenticated" @click="signOut" text to="/">
+              <v-icon small class="mr-2">fa-user-minus</v-icon>ausloggen
             </v-btn>
           </v-toolbar-items>
         </v-col>
@@ -52,7 +55,14 @@
             <v-list-item-title>Registrieren</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-
+        <v-list-item v-show="authenticated" link to="/" @click="signOut">
+          <v-list-item-icon>
+            <v-icon small>fa-user-minus</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title>ausloggen</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
         <v-list-item
           v-for="item in menuItems"
           :key="item.path"
@@ -108,7 +118,12 @@ export default {
       }
     ]
   }),
-  methods: {},
+  methods: {
+    signOut() {
+      let result = this.$fire.auth.signOut();
+      this.$store.commit("user/SET_USER", undefined);
+    }
+  },
   computed: {
     authenticated: function() {
       if (this.$store.state.user.user) {

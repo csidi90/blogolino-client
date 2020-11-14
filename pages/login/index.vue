@@ -72,7 +72,10 @@ export default {
         );
 
         if (this.$fire.auth.currentUser) {
-          this.$store.commit("user/SET_USER", this.$fire.auth.currentUser);
+          this.$store.commit(
+            "user/SET_USER",
+            this.$fire.auth.currentUser.toJSON()
+          );
           this.$router.push("/");
         }
       } catch (error) {
