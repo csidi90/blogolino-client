@@ -37,6 +37,16 @@
                 label="Passwort"
               ></v-text-field>
             </v-col>
+            <v-col v-if="error !== ''" cols="12">
+              <v-alert
+                icon="fa-exclamation"
+                class="text-center"
+                rounded
+                color="error"
+              >
+                {{ error }}
+              </v-alert>
+            </v-col>
 
             <v-col
               class="d-flex justify-end"
@@ -61,46 +71,20 @@ export default {
   transition: "page",
   data: () => ({
     email: "csidiropoulos1990@gmail.com",
-    password: "dfgvbn"
+    password: "dfgvbn",
+    error: ""
   }),
   methods: {
     async signIn() {
-      try {
-        let result = await this.$fire.auth.signInWithEmailAndPassword(
-          this.email,
-          this.password
-        );
+      let payload = {
+        email: this.email,
+        password: this.password
+      };
 
-        if (this.$fire.auth.currentUser) {
-          this.$store.commit(
-            "user/SET_USER",
-            this.$fire.auth.currentUser.toJSON()
-          );
-          this.$router.push("/");
-        }
-      } catch (error) {
-        console.log(error);
-      }
+      this.$store.dispatch("user/SIGN_IN", payload);
     }
   },
-  async created() {
-    /*
-                                                                                        try {
-                                                                                            let result = await this.$fire.auth.signInWithEmailAndPassword(
-                                                                                                this.email,
-                                                                                                this.password
-                                                                                            );
-
-                                                                                            let usersCollection = await this.$fire.firestore
-                                                                                                .collection("users")
-                                                                                                .get();
-                                                                                            for (const doc of usersCollection.docs) {
-                                                                                                console.log(doc.id, "=>", doc.data());
-                                                                                            }
-                                                                                        } catch (error) {
-                                                                                            console.log(error);
-                                                                                        }*/
-  }
+  async created() {}
 };
 </script>
 

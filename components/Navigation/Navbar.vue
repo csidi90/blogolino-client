@@ -1,6 +1,6 @@
 <template>
   <div class="mb-10">
-    <v-app-bar app height="100%" color="white" elevation="0">
+    <v-app-bar app height="100%" color="white" elevation="1">
       <nuxt-link class="banner" exact to="/">
         <h1 class="display-1 mr-10">Blogolino</h1>
       </nuxt-link>
@@ -17,8 +17,11 @@
               <v-icon small class="mr-2">fa-{{ item.icon }}</v-icon>
               {{ item.title }}
             </v-btn>
-            <v-spacer></v-spacer>
-
+          </v-toolbar-items>
+        </v-col>
+        <v-spacer></v-spacer>
+        <v-col class="fill-height ma-0 pa-0 hidden-sm-and-down">
+          <v-toolbar-items>
             <v-btn v-show="!authenticated" text to="login">
               <v-icon small class="mr-2">fa-lock-open</v-icon>anmelden
             </v-btn>
@@ -31,7 +34,7 @@
           </v-toolbar-items>
         </v-col>
       </v-row>
-      <v-spacer></v-spacer>
+
       <v-app-bar-nav-icon
         class="hidden-md-and-up"
         @click.stop="drawer = !drawer"
