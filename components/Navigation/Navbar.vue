@@ -1,11 +1,17 @@
 <template>
   <div class="mb-10">
-    <v-app-bar app height="100%" color="white" elevation="1">
-      <nuxt-link class="banner" exact to="/">
-        <h1 class="display-1 mr-10">Blogolino</h1>
-      </nuxt-link>
-      <v-row no-gutters class="fill-height">
-        <v-col class="fill-height ma-0 pa-0 hidden-sm-and-down">
+    <v-app-bar app color="white" height="100%" elevation="1">
+      <v-row no-gutters class="flex-nowrap fill-height">
+        <v-col class="fill-height">
+          <nuxt-link
+            class="d-flex align-center banner fill-height "
+            exact
+            to="/"
+          >
+            <h1 class="display-1 mr-10">Blogolino</h1>
+          </nuxt-link></v-col
+        >
+        <v-col class="fill-height ma-0 pa-0 hidden-sm-and-down ">
           <v-toolbar-items>
             <v-btn
               class="mx-4"
@@ -14,22 +20,23 @@
               :to="item.path"
               text
             >
-              <v-icon small class="mr-2">fa-{{ item.icon }}</v-icon>
+              <v-icon small class="mr-4">fa-{{ item.icon }}</v-icon>
               {{ item.title }}
             </v-btn>
+            <v-btn text class="mx-4"><v-icon>fa-search</v-icon></v-btn>
           </v-toolbar-items>
         </v-col>
         <v-spacer></v-spacer>
-        <v-col class="fill-height ma-0 pa-0 hidden-sm-and-down">
+        <v-col class="fill-height ma-0 pa-0 hidden-sm-and-down ">
           <v-toolbar-items>
             <v-btn v-show="!authenticated" text to="login">
               <v-icon small class="mr-2">fa-lock-open</v-icon>anmelden
             </v-btn>
             <v-btn v-show="!authenticated" text to="signup">
-              <v-icon small class="mr-2">fa-user-plus</v-icon>registrieren
+              <v-icon small class="mr-4">fa-user-plus</v-icon>registrieren
             </v-btn>
             <v-btn v-show="authenticated" @click="signOut" text to="/">
-              <v-icon small class="mr-2">fa-user-minus</v-icon>ausloggen
+              <v-icon small class="mr-4">fa-user-minus</v-icon>ausloggen
             </v-btn>
           </v-toolbar-items>
         </v-col>
